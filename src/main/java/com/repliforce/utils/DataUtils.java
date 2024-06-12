@@ -1,4 +1,4 @@
-package br.ce.wcaquino.utils;
+package com.repliforce.utils;
 
 import static java.util.Calendar.DAY_OF_MONTH;
 import static java.util.Calendar.DAY_OF_WEEK;
@@ -14,14 +14,14 @@ public class DataUtils {
 	 * Retorna a data enviada por parametro com a adição dos dias desejado
 	 * 	a Data pode estar no futuro (dias > 0) ou no passado (dias < 0)
 	 * 
-	 * @param data
-	 * @param dias
+	 * @param date
+	 * @param days
 	 * @return
 	 */
-	public static Date adicionarDias(Date data, int dias) {
+	public static Date addDays(Date date, int days) {
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(data);
-		calendar.add(DAY_OF_MONTH, dias);
+		calendar.setTime(date);
+		calendar.add(DAY_OF_MONTH, days);
 		return calendar.getTime();
 	}
 	

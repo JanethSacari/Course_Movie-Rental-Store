@@ -1,20 +1,20 @@
-package br.ce.wcaquino.entidades;
+package com.repliforce.entities;
 
 import java.util.Date;
 
-public class Locacao {
+public class Rent {
 
-	private Usuario usuario;
-	private Filme filme;
+	private User user;
+	private Movie movie;
 	private Date dataLocacao;
 	private Date dataRetorno;
 	private Double valor;
 	
-	public Usuario getUsuario() {
-		return usuario;
+	public User getUser() {
+		return user;
 	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public Date getDataLocacao() {
 		return dataLocacao;
@@ -34,10 +34,10 @@ public class Locacao {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-	public Filme getFilme() {
-		return filme;
+	public Movie getFilme() {
+		return movie;
 	}
-	public void setFilme(Filme filme) {
-		this.filme = filme;
+	public void setMovie(Movie filme) {
+		this.movie = filme;
 	}
 }

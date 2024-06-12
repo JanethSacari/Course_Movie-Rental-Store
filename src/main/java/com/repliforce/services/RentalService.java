@@ -1,14 +1,9 @@
-package br.ce.wcaquino.servicos;
-
-import static br.ce.wcaquino.utils.DataUtils.adicionarDias;
+package com.repliforce.services;
 
 import java.util.Date;
+import static com.repliforce.utils.DataUtils.adicionarDias;
 
-import br.ce.wcaquino.entidades.Filme;
-import br.ce.wcaquino.entidades.Locacao;
-import br.ce.wcaquino.entidades.Usuario;
-
-public class LocacaoService {
+public class RentalService {
 	
 	public Locacao alugarFilme(Usuario usuario, Filme filme) {
 		Locacao locacao = new Locacao();
