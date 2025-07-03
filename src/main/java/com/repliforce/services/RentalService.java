@@ -5,10 +5,11 @@ import com.repliforce.entities.Rent;
 import com.repliforce.entities.User;
 
 import java.util.Date;
-import static com.repliforce.utils.DataUtils.addDays;
+
+import static com.repliforce.utils.DateUtils.addDays;
 
 public class RentalService {
-	
+
 	public Rent rentMovie(User user, Movie movie) {
 		Rent rent = new Rent();
 		rent.setMovie(movie);
@@ -16,18 +17,14 @@ public class RentalService {
 		rent.setRentDate(new Date());
 		rent.setPrice(movie.getRentalPrice());
 
-		//Entrega no dia seguinte
+		//Return date is set to one day after the rental date
 		Date deliveryDate = new Date();
 		deliveryDate = addDays(deliveryDate, 1);
 		rent.setReturnDate(deliveryDate);
 		
-		//Salvando a locacao...	
-		//TODO adicionar método para salvar
+		// Set the movie as rented
+		//TODO
 		
 		return rent;
-	}
-
-	public static void main(String[] args) {
-		
 	}
 }
