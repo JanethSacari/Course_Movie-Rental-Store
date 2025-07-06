@@ -24,6 +24,6 @@ public class RentalServiceTest {
         // Verify the results
         Assert.assertTrue(rent.getPrice() == 10.0);
         Assert.assertTrue(DateUtils.isSameDate(rent.getRentDate(), new Date()));
-        Assert.assertTrue(DateUtils.isSameDate(rent.getReturnDate(), DateUtils.obterDataComDiferencaDias(1)));
+        Assert.assertTrue(DateUtils.isSameDate(rent.getReturnDate(), DateUtils.obtainDateWithDifferenceOfDays(1)));
     }
 }

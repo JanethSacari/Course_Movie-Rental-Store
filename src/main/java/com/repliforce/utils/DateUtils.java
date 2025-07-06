@@ -8,8 +8,8 @@ import static java.util.Calendar.*;
 public class DateUtils {
 	
 	/**
-	 * Retorna a data enviada por parametro com a adição dos dias desejado
-	 * 	a Data pode estar no futuro (dias > 0) ou no passado (dias < 0)
+	 * Return a new date with the number of days added to the given date.
+	 * 	the Date can stay in future (days > 0) or in past (days < 0)
 	 * 
 	 * @param date
 	 * @param days
@@ -23,18 +23,18 @@ public class DateUtils {
 	}
 	
 	/**
-	 * Retorna a data atual com a diferenca de dias enviados por parametro
-	 * 		a Data pode estar no futuro (parametro positivo) ou no passado (parametro negativo)
+	 * Returns the current date with the difference in days sent as a parameter
+	 * The date can be in the future (positive parameter) or in the past (negative parameter)
 	 * 
-	 * @param days Quantidade de dias a ser incrementado/decrementado
-	 * @return Data atualizada
+	 * @param days Quantity of days to be added to the current date
+	 * @return Updated date
 	 */
-	public static Date obterDataComDiferencaDias(int days) {
+	public static Date obtainDateWithDifferenceOfDays(int days) {
 		return addDays(new Date(), days);
 	}
 	
 	/**
-	 * Retorna uma instância de <code>Date</code> refletindo os valores passados por parametro
+	 * Obtains a date based on the day, month and year passed as parameters.
 	 * 
 	 * @param day
 	 * @param month
@@ -50,8 +50,8 @@ public class DateUtils {
 	}
 	
 	/**
-	 * Verifica se uma data é igual a outra
-	 * 	Esta comparação considera apenas dia, mes e ano
+	 * Verify if two dates are the same, considering only day, month and year.
+	 * 	This method ignores the time part of the date.
 	 * 
 	 * @param date1
 	 * @param date2
@@ -68,10 +68,10 @@ public class DateUtils {
 	}
 	
 	/**
-	 * Verifica se uma determinada data é o dia da semana desejado
+	 * Verifies if the given date is a specific day of the week.
 	 * 
-	 * @param date Data a ser avaliada
-	 * @param weekDay <code>true</code> caso seja o dia da semana desejado, <code>false</code> em caso contrário
+	 * @param date Date to be verified
+	 * @param weekDay <code>true</code> if the date is a specific day of the week, <code>false</code> otherwise.
 	 * @return
 	 */
 	public static boolean verifyWeekDay(Date date, int weekDay) {
