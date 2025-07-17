@@ -22,7 +22,7 @@ public class RentalServiceTest {
         Rent rent = rentalService.rentMovie(user, movie);
 
         // Verify the results
-        Assert.assertTrue(rent.getPrice() == 10.0);
+        Assert.assertEquals(10, rent.getPrice(), 0.01);
         Assert.assertTrue(DateUtils.isSameDate(rent.getRentDate(), new Date()));
         Assert.assertTrue(DateUtils.isSameDate(rent.getReturnDate(), DateUtils.obtainDateWithDifferenceOfDays(1)));
     }
