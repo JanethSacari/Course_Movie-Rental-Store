@@ -4,10 +4,17 @@ import com.repliforce.entities.Movie;
 import com.repliforce.entities.Rent;
 import com.repliforce.entities.User;
 import com.repliforce.utils.DateUtils;
+import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Date;
+
+import static com.repliforce.utils.DateUtils.isSameDate;
+import static com.repliforce.utils.DateUtils.obtainDateWithDifferenceOfDays;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class RentalServiceTest {
 
@@ -22,8 +29,9 @@ public class RentalServiceTest {
         Rent rent = rentalService.rentMovie(user, movie);
 
         // Verify the results
-        Assert.assertEquals(10, rent.getPrice(), 0.01);
-        Assert.assertTrue(DateUtils.isSameDate(rent.getRentDate(), new Date()));
-        Assert.assertTrue(DateUtils.isSameDate(rent.getReturnDate(), DateUtils.obtainDateWithDifferenceOfDays(1)));
+        assertThat(rent.getPrice(), is(equalTo(10.0)));
+        assertThat(rent.getPrice(), is(not(6.0)));
+        assertThat(isSameDate(rent.getRentDate(), new Date()), is(true));
+        assertThat(isSameDate(rent.getReturnDate(), obtainDateWithDifferenceOfDays(1)), is(true));
     }
 }
