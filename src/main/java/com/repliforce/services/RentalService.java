@@ -10,7 +10,10 @@ import static com.repliforce.utils.DateUtils.addDays;
 
 public class RentalService {
 
-	public Rent rentMovie(User user, Movie movie) {
+	public Rent rentMovie(User user, Movie movie) throws Exception {
+		if (movie.getStock() == 0) {
+			throw new Exception("Movie is not available for rent");
+		}
 		Rent rent = new Rent();
 		rent.setMovie(movie);
 		rent.setUser(user);

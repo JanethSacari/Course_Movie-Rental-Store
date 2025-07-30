@@ -13,7 +13,6 @@ import static com.repliforce.utils.DateUtils.isSameDate;
 import static com.repliforce.utils.DateUtils.obtainDateWithDifferenceOfDays;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 
 public class RentalServiceTest {
 
@@ -21,7 +20,7 @@ public class RentalServiceTest {
     public ErrorCollector collector = new ErrorCollector();
 
     @Test
-    public void testRentMovie() {
+    public void testRentMovie() throws Exception {
         // Set up the test environment
         RentalService rentalService = new RentalService();
         User user = new User("X");
@@ -34,5 +33,17 @@ public class RentalServiceTest {
         collector.checkThat(rent.getPrice(), is(equalTo(10.0)));
         collector.checkThat(isSameDate(rent.getRentDate(), new Date()), is(true));
         collector.checkThat(isSameDate(rent.getReturnDate(), obtainDateWithDifferenceOfDays(1)), is(true));
+    }
+
+    //Elegant testing approach
+    @Test(expected = Exception.class)
+    public void testRentMovieWithNoStock() throws Exception {
+        // Set up the test environment
+        RentalService rentalService = new RentalService();
+        User user = new User("X");
+        Movie movie = new Movie("The Day of Sigma", 0, 10.0); // No stock available
+
+        // Execute the method to be tested
+        rentalService.rentMovie(user, movie);
     }
 }
