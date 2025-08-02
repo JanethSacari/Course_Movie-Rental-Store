@@ -46,4 +46,22 @@ public class RentalServiceTest {
         // Execute the method to be tested
         rentalService.rentMovie(user, movie);
     }
+
+    //Robust testing approach
+    @Test
+    public void testRentMovieWithNoStoke_2() {
+        // Set up the test environment
+        RentalService rentalService = new RentalService();
+        User user = new User("Zero");
+        Movie movie = new Movie("The Day of Sigma", 0, 10.0); // No stock available
+
+        try {
+            // Execute the method to be tested
+            rentalService.rentMovie(user, movie);
+            // If no exception is thrown, the test should fail
+            collector.addError(new AssertionError("Expected an exception to be thrown"));
+        } catch (Exception e) {
+            collector.checkThat(e.getMessage(), is(equalTo("Movie is not available for rent")));
+        }
+    }
 }
