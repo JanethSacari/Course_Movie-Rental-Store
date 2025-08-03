@@ -6,6 +6,7 @@ import com.repliforce.entities.User;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
+import org.junit.rules.ExpectedException;
 
 import java.util.Date;
 
@@ -18,6 +19,9 @@ public class RentalServiceTest {
 
     @Rule
     public ErrorCollector collector = new ErrorCollector();
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void testRentMovie() throws Exception {
@@ -63,5 +67,21 @@ public class RentalServiceTest {
         } catch (Exception e) {
             collector.checkThat(e.getMessage(), is(equalTo("Movie is not available for rent")));
         }
+    }
+
+    //New approach using ExpectedException rule
+    @Test
+    public void testRentMovieWithNoStoke_3() throws Exception {
+        // Set up the test environment
+        RentalService rentalService = new RentalService();
+        User user = new User("Zero");
+        Movie movie = new Movie("The Day of Sigma", 0, 10.0); // No stock available
+
+        // Set the expected exception
+        expectedException.expect(Exception.class);
+        expectedException.expectMessage("Movie is not available for rent");
+
+        // Execute the method to be tested
+        rentalService.rentMovie(user, movie);
     }
 }
